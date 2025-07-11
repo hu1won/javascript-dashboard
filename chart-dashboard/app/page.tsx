@@ -26,6 +26,7 @@ import Button21 from "@/components/Button21"
 import Button22 from "@/components/Button22"
 import Button23 from "@/components/Button23"
 import Button24 from "@/components/Button24"
+import Button4 from "@/components/Button4"
 import { Card, CardContent } from "@/components/ui/card"
 
 export default function Home() {
@@ -39,6 +40,8 @@ export default function Home() {
         return <BarChart />
       case 3:
         return <PieChart />
+      case 4:
+        return <Button4 />
       case 6:
         return <Button6 />
       case 8:
