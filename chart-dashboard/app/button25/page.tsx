@@ -1,8 +1,8 @@
 'use client'
 
 import React, { useMemo, useState } from 'react';
-import { Card, Typography, Table, Row, Col, Select, Tooltip, Space, Badge, Tag } from 'antd';
-import { QuestionCircleOutlined, LinkOutlined, WarningOutlined } from '@ant-design/icons';
+import { Card, Typography, Table, Row, Col, Select, Tooltip, Space, Badge, Tag, Statistic } from 'antd';
+import { QuestionCircleOutlined, LinkOutlined, WarningOutlined, CheckCircleOutlined, CloseCircleOutlined, FileExcelOutlined } from '@ant-design/icons';
 
 const { Title, Text } = Typography;
 const { Option } = Select;
@@ -61,6 +61,14 @@ function toDate(s: string) {
 
 const Button25Page: React.FC = () => {
   const [teacher, setTeacher] = useState<string>('김민지');
+
+  // Mock statistics data
+  const stats = useMemo(() => ({
+    total: 150,
+    normal: 116,
+    failed: 34,
+    abnormal: 51,
+  }), []);
 
   const commonService = '발달재활서비스 가형';
   const commonSchedule = '2025-01-01 13:00';
@@ -211,6 +219,50 @@ const Button25Page: React.FC = () => {
         <Title level={4} className="!mb-0">이상 수납 모니터링</Title>
         <Text type="secondary">선택한 선생님: {teacher}</Text>
       </div>
+
+      {/* Statistics Dashboard Cards */}
+      <Row gutter={[12, 12]} className="mb-6">
+        <Col xs={12} sm={6} lg={3}>
+          <Card size="small" bodyStyle={{ padding: '16px' }}>
+            <Statistic
+              title={<span style={{ fontSize: '13px' }}>Excel 업로드</span>}
+              value={stats.total}
+              prefix={<FileExcelOutlined style={{ color: '#1890ff', fontSize: '20px' }} />}
+              valueStyle={{ color: '#1890ff', fontSize: '24px' }}
+            />
+          </Card>
+        </Col>
+        <Col xs={12} sm={6} lg={3}>
+          <Card size="small" bodyStyle={{ padding: '16px' }}>
+            <Statistic
+              title={<span style={{ fontSize: '13px' }}>정상</span>}
+              value={stats.normal}
+              prefix={<CheckCircleOutlined style={{ color: '#52c41a', fontSize: '20px' }} />}
+              valueStyle={{ color: '#52c41a', fontSize: '24px' }}
+            />
+          </Card>
+        </Col>
+        <Col xs={12} sm={6} lg={3}>
+          <Card size="small" bodyStyle={{ padding: '16px' }}>
+            <Statistic
+              title={<span style={{ fontSize: '13px' }}>실패</span>}
+              value={stats.failed}
+              prefix={<CloseCircleOutlined style={{ color: '#ff4d4f', fontSize: '20px' }} />}
+              valueStyle={{ color: '#ff4d4f', fontSize: '24px' }}
+            />
+          </Card>
+        </Col>
+        <Col xs={12} sm={6} lg={3}>
+          <Card size="small" bodyStyle={{ padding: '16px' }}>
+            <Statistic
+              title={<span style={{ fontSize: '13px' }}>이상 결제</span>}
+              value={stats.abnormal}
+              prefix={<WarningOutlined style={{ color: '#faad14', fontSize: '20px' }} />}
+              valueStyle={{ color: '#faad14', fontSize: '24px' }}
+            />
+          </Card>
+        </Col>
+      </Row>
 
       <Row gutter={[16, 16]}>
         <Col xs={24} sm={12} lg={6}>
