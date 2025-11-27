@@ -27,6 +27,9 @@ import Button22 from "@/components/Button22"
 import Button23 from "@/components/Button23"
 import Button24 from "@/components/Button24"
 import Button25 from "@/components/Button25"
+import Button26 from "@/components/Button26"
+import Button27 from "@/components/Button27"
+import Button28 from "@/components/Button28"
 import Button4 from "@/components/Button4"
 import Button7 from "@/components/Button7"
 import { Card, CardContent } from "@/components/ui/card"
@@ -90,6 +93,12 @@ export default function Home() {
         return <Button24 />
       case 25:
         return <Button25 />
+      case 26:
+        return <Button26 />
+      case 27:
+        return <Button27 />
+      case 28:
+        return <Button28 />
       default:
         return null
     }
@@ -101,7 +110,7 @@ export default function Home() {
         <h1 className="text-4xl font-bold mb-8 text-center text-indigo-800 shadow-text">차트 대시보드</h1>
         <Card className="mb-8 p-6 bg-white bg-opacity-80 backdrop-blur-md">
           <div className="grid grid-cols-10 gap-2">
-            {Array.from({ length: 25 }, (_, i) => (
+            {Array.from({ length: 28 }, (_, i) => (
               <Button 
                 key={i} 
                 onClick={() => setActiveChart(i + 1)}
